@@ -29,35 +29,6 @@ module.exports = {
 
         use: ["xml-loader"],
       },
-      {
-        test: /\.toml$/i,
-
-        type: "json",
-
-        parser: {
-          parse: toml.parse,
-        },
-      },
-
-      {
-        test: /\.yaml$/i,
-
-        type: "json",
-
-        parser: {
-          parse: yaml.parse,
-        },
-      },
-
-      {
-        test: /\.json5$/i,
-
-        type: "json",
-
-        parser: {
-          parse: json5.parse,
-        },
-      },
     ],
   },
 };
