@@ -2,10 +2,10 @@ export default class ProcessedWeather {
   constructor(
     date,
     avgTempC,
-    maxTempC,
-    minTempC,
     avgTempF,
+    maxTempC,
     maxTempF,
+    minTempC,
     minTempF,
     sunrise,
     sunset,
