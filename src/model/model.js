@@ -2,7 +2,7 @@ import ProcessedWeather from "./weatherOfDay";
 
 export default class Model {
   constructor() {
-    this.location = "hannover";
+    this.location = "hanover";
     this.key = "bd332034335c4701ac3183417232611";
     this.weatherData = Model.fetchWeatherData(this.key, this.location);
     this.processedWeatherData = [];
@@ -22,7 +22,39 @@ export default class Model {
 
   static processWeatherData = (data) => {
     data.then((weather) => {
-      console.log(weather)
+      const {
+        location: { name: nameOfLocation },
+      } = weather;
+      weather.forecast.forecastday.forEach((day) => {
+        const {
+          date,
+          day: {
+            avgtemp_c,
+            avgtemp_f,
+            maxtemp_c,
+            maxtemp_f,
+            mintemp_c,
+            mintemp_f,
+            condition: { text: weatherDescription },
+          },
+          astro: { sunrise, sunset },
+        } = day;
+        const weatherOfTheDay = new ProcessedWeather(
+          date,
+          avgtemp_c,
+          avgtemp_f,
+          maxtemp_c,
+          maxtemp_f,
+          mintemp_c,
+          mintemp_f,
+          sunrise,
+          sunset,
+          weatherDescription,
+          nameOfLocation,
+        );
+
+        console.log(weatherOfTheDay);
+      });
     });
   };
 }
