@@ -15,6 +15,78 @@ export default class Model {
   };
 
   static processWeatherData = (weatherData) => {
-    console.log(weatherData.forecast);
+    this.processedWeather = [];
+
+    weatherData.forecast.forecastday.forEach((day) => {
+      const {
+        astro: { sunrise, sunset },
+        date,
+        day: {
+          avgtemp_c,
+          avgtemp_f,
+          maxtemp_c,
+          maxtemp_f,
+          mintemp_c,
+          mintemp_f,
+          condition: { text },
+        },
+      } = day;
+
+      this.processedWeather.push(
+        Model.createWeatherObject(
+          sunrise,
+          sunset,
+          date,
+          avgtemp_c,
+          avgtemp_f,
+          maxtemp_c,
+          maxtemp_f,
+          mintemp_c,
+          mintemp_f,
+          text,
+        ),
+      );
+    });
+
+    console.log(this.processedWeather);
   };
+
+  static createWeatherObject(
+    sunUp,
+    sunDown,
+    day,
+    avgtemp_c,
+    avgtemp_f,
+    maxtemp_c,
+    maxtemp_f,
+    mintemp_c,
+    mintemp_f,
+    text,
+  ) {
+    const sunrise = sunUp;
+    const sunset = sunDown;
+    const date = day;
+    const avgtempC = avgtemp_c;
+    const avgtempF = avgtemp_f;
+    const maxtempC = maxtemp_c;
+    const maxtempF = maxtemp_f;
+    const mintempC = mintemp_c;
+    const mintempF = mintemp_f;
+    const weatherDescription = text;
+    const hourlyWeather = [];
+
+    return {
+      sunrise,
+      sunset,
+      date,
+      avgtempC,
+      avgtempF,
+      maxtempC,
+      maxtempF,
+      mintempC,
+      mintempF,
+      weatherDescription,
+      hourlyWeather,
+    };
+  }
 }
