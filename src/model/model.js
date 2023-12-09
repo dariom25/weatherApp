@@ -46,9 +46,14 @@ export default class Model {
           text,
         ),
       );
-    });
 
-    console.log(this.processedWeather);
+      day.hour.forEach((hour) => {
+        const { chance_of_rain, temp_c, temp_f, time } = hour;
+        const last = this.processedWeather.length -1
+        this.processedWeather[last].hourlyWeather.push(Model.createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time))
+      });
+    });
+    console.log(this.processedWeather)
   };
 
   static createWeatherObject(
@@ -88,5 +93,14 @@ export default class Model {
       weatherDescription,
       hourlyWeather,
     };
+  }
+
+  static createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time) {
+    const chanceOfRain = chance_of_rain;
+    const tempC = temp_c;
+    const tempF = temp_f;
+    const hour = time;
+
+    return { chanceOfRain, tempC, tempF, hour };
   }
 }
