@@ -49,11 +49,13 @@ export default class Model {
 
       day.hour.forEach((hour) => {
         const { chance_of_rain, temp_c, temp_f, time } = hour;
-        const last = this.processedWeather.length -1
-        this.processedWeather[last].hourlyWeather.push(Model.createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time))
+        const last = this.processedWeather.length - 1;
+        this.processedWeather[last].hourlyWeather.push(
+          Model.createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time),
+        );
       });
     });
-    console.log(this.processedWeather)
+    console.log(this.processedWeather);
   };
 
   static createWeatherObject(
