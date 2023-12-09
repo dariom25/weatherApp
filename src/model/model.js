@@ -2,7 +2,6 @@ export default class Model {
   constructor() {
     this.location = "hanover";
     this.key = "bd332034335c4701ac3183417232611";
-    Model.fetchWeatherData(this.key, this.location);
   }
 
   static fetchWeatherData = async (key, location) => {
@@ -55,7 +54,7 @@ export default class Model {
         );
       });
     });
-    console.log(this.processedWeather);
+    return this.processedWeather;
   };
 
   static createWeatherObject(
