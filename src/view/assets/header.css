@@ -1,82 +1,74 @@
-.header{
-    display: flex;
-    justify-content: space-between;
+.header {
+  display: flex;
+  justify-content: space-between;
 
-    padding: 10px;
+  padding: 10px;
 
-    background-color: rgb(64, 64, 179);
+  background-color: rgb(64, 64, 179);
 }
 
-.app-name{
-    font-size: 32px;
-    font-weight: 600;
-    text-align: center;
+.app-name {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
 }
 
-.navigation{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 40%;
+.navigation {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40%;
 
-    border: 1px solid black;
-
-    gap: 10%;
-
+  gap: 10%;
 }
 
-.search-bar{
-    width: 100%;
-    display: flex;
-
+.search-bar {
+  width: 100%;
+  display: flex;
 }
 
-.search-bar>input{
-    width: 80%;
-    border-radius: 15px 0px 0px 15px;
+.search-bar > input {
+  width: 80%;
+  border-radius: 15px 0px 0px 15px;
 
-    background-color: rgb(230, 230, 230);
+  background-color: rgb(230, 230, 230);
 
-    border: 1px solid rgb(0, 0, 0);
-    padding: 5px;
-
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px;
 }
 
-.search-bar>input:focus{
-    outline: none;
+.search-bar > input:focus {
+  outline: none;
 }
 
-.search-button{
-    border-radius: 0px 15px 15px 0px;
-    background-color: rgb(160, 160, 160);
+.search-button {
+  border-radius: 0px 15px 15px 0px;
+  background-color: rgb(160, 160, 160);
 
-    margin: 0px;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 5px;
+  margin: 0px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
-.search-button:hover{
-    background-color: rgb(139, 139, 139);
-
+.search-button:hover {
+  background-color: rgb(139, 139, 139);
 }
 
-.toggle-temperature{
-    width: 60%;
+.toggle-temperature {
+  width: 60%;
 
-    border-radius: 15px;
-    background-color: rgb(160, 160, 160);
+  border-radius: 15px;
+  background-color: rgb(160, 160, 160);
 
-    margin: 0px;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 5px;
+  margin: 0px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px;
 
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
-.toggle-temperature:hover{
-    background-color: rgb(139, 139, 139);
-
+.toggle-temperature:hover {
+  background-color: rgb(139, 139, 139);
 }
