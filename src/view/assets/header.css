@@ -17,9 +17,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 50%;
+    width: 40%;
 
     border: 1px solid black;
+
+    gap: 10%;
 
 }
 
@@ -27,13 +29,11 @@
     width: 100%;
     display: flex;
 
-    border: 1px solid black;
 }
 
 .search-bar>input{
-    width: 100%;
+    width: 80%;
     border-radius: 15px 0px 0px 15px;
-    height: 24px;
 
     background-color: rgb(230, 230, 230);
 
@@ -63,8 +63,20 @@
 }
 
 .toggle-temperature{
-    width: 100%;
+    width: 60%;
 
-    border: 1px solid black;
+    border-radius: 15px;
+    background-color: rgb(160, 160, 160);
+
+    margin: 0px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+
+    cursor: pointer;
+
+}
+
+.toggle-temperature:hover{
+    background-color: rgb(139, 139, 139);
 
 }
