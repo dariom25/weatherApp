@@ -1,5 +1,11 @@
-:root{
-    font-size: 1vw;
+:root {
+  font-size: 1vw;
+
+  --dark-blue: rgb(22, 105, 122);
+  --lighter-blue: rgb(72, 159, 181);
+  --lightblue: rgb(130, 192, 204);
+  --background-gray: rgb(237, 231, 227);
+  --yellow-orange: rgb(255, 166, 43);
 }
 
 body {
