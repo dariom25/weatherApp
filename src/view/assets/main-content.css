@@ -1,62 +1,70 @@
-.main-content{
-    border: 1px solid black;
+.main-content {
+  margin: 0% 16%;
 
-    margin: 0% 16%;
-
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-.content-header{
-    display: flex;
-
-    justify-content: space-between;
-    gap: 10px;
-
-    padding: 5px;
+.upcoming-days {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
 }
 
-.upcoming-days{
-    display: flex;
-    justify-content: space-between;
-
-    width: 40%;
+.today,
+.tomorrow,
+.day-after-tomorrow {
+  cursor: pointer;
 }
 
-.daily-weather{
-    border: 1px solid black;
+.selected {
+  background-color: var(--lighter-blue);
 
-    display: flex;
-    justify-content: space-around;
-
-    gap: 30%;
-
-    background-color: rgb(0, 119, 255);
+  border-radius: 10px 10px 0px 0px;
 }
 
-.temperature-information{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-end;
+.daily-weather {
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  background-color: var(--lighter-blue);
+  border-radius: 0px 10px 10px 10px;
 }
 
-.general-information{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: flex-end;
+.location {
+  grid-area: 1/1;
 }
 
-.weather-description{
+.date{
     grid-area: 1/2;
 }
 
+.avg-temp{
+    grid-area: 2/1;
+
+}
+
+.max-temp{
+    grid-area: 3/1;
+}
+
+.min-temp{
+    grid-area: 4/1;
+}
+
+.weather-description{
+    grid-area: 1/3/5/6;
+}
+
 .sunrise{
-    grid-area: 2/2;
+  grid-area: 3/4;
 }
 
 .sunset{
-    grid-area: 3/2;
+  grid-area: 4/4;
+}
+
+.p-in-px{
+  padding: 15px;
 }
