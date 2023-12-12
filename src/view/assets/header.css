@@ -13,9 +13,10 @@
 }
 
 .app-name {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   text-align: center;
+  color: var(--background-gray);
 }
 
 .navigation {
