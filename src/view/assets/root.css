@@ -8,10 +8,8 @@
   --yellow-orange: rgb(255, 166, 43);
 
   --header: 5rem;
-  --footer: 2rem;
+  --footer: 5rem;
   --font-size-standard: 0.7rem;
-
-  box-sizing: border-box;
 }
 
 *, *:before, *:after {
