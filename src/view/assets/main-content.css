@@ -17,6 +17,11 @@
 .tomorrow,
 .day-after-tomorrow {
   cursor: pointer;
+
+  border-top: 1px solid var(--lighter-blue);
+  border-right: 1px solid var(--lighter-blue);
+  border-left: 1px solid var(--lighter-blue);
+  border-radius: 10px 10px 0px 0px;
 }
 
 .today {
@@ -42,13 +47,6 @@
   font-weight: 600;
 }
 
-.deselected {
-  border-top: 1px solid var(--dark-blue);
-  border-right: 1px solid var(--dark-blue);
-  border-left: 1px solid var(--dark-blue);
-  border-radius: 10px 10px 0px 0px;
-}
-
 .daily-weather {
   gap: 10px 0px;
   display: grid;
@@ -62,12 +60,10 @@
 
 .location {
   grid-area: 1/1;
-  border-bottom: 2px solid var(--dark-blue);
 }
 
 .date {
   grid-area: 1/2;
-  border-bottom: 2px solid var(--dark-blue);
 }
 
 .avg-temp {
