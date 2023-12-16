@@ -4,17 +4,19 @@ export default class Model {
     this.key = "bd332034335c4701ac3183417232611";
   }
 
-  static fetchWeatherData = async (key, location) => {
+  fetchWeatherData = async (location) => {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=3`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${this.key}&q=${location}&days=3`,
       { mode: "cors" },
     );
     const weatherData = await response.json();
-    Model.processWeatherData(weatherData);
+    return this.processWeatherData(weatherData);
   };
 
-  static processWeatherData = (weatherData) => {
-    this.processedWeather = [];
+  processWeatherData = (weatherData) => {
+    const processedWeather = [];
+
+    const place = weatherData.location.name;
 
     weatherData.forecast.forecastday.forEach((day) => {
       const {
@@ -31,8 +33,8 @@ export default class Model {
         },
       } = day;
 
-      this.processedWeather.push(
-        Model.createWeatherObject(
+      processedWeather.push(
+        this.createWeatherObject(
           sunrise,
           sunset,
           date,
@@ -43,21 +45,22 @@ export default class Model {
           mintemp_c,
           mintemp_f,
           text,
+          place,
         ),
       );
 
       day.hour.forEach((hour) => {
         const { chance_of_rain, temp_c, temp_f, time } = hour;
-        const last = this.processedWeather.length - 1;
-        this.processedWeather[last].hourlyWeather.push(
-          Model.createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time),
+        const last = processedWeather.length - 1;
+        processedWeather[last].hourlyWeather.push(
+          this.createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time),
         );
       });
     });
-    return this.processedWeather;
+    return processedWeather;
   };
 
-  static createWeatherObject(
+  createWeatherObject(
     sunUp,
     sunDown,
     day,
@@ -68,6 +71,7 @@ export default class Model {
     mintemp_c,
     mintemp_f,
     text,
+    place,
   ) {
     const sunrise = sunUp;
     const sunset = sunDown;
@@ -80,6 +84,7 @@ export default class Model {
     const mintempF = mintemp_f;
     const weatherDescription = text;
     const hourlyWeather = [];
+    const location = place;
 
     return {
       sunrise,
@@ -93,10 +98,11 @@ export default class Model {
       mintempF,
       weatherDescription,
       hourlyWeather,
+      location,
     };
   }
 
-  static createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time) {
+  createHourlyWeatherObject(chance_of_rain, temp_c, temp_f, time) {
     const chanceOfRain = chance_of_rain;
     const tempC = temp_c;
     const tempF = temp_f;
