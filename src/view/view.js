@@ -12,9 +12,7 @@ export default class View {
     this.sunrise = document.querySelector(".sunrise");
     this.sunset = document.querySelector(".sunset");
     this.weatherDescription = document.querySelector(".weather-description");
-    this.time = document.querySelector(".time");
-    this.hourlyTemp = document.querySelector(".temp");
-    this.rainChance = document.querySelector(".rainchance");
+    this.cards = document.querySelector(".cards");
     this.toggleBtn = document.querySelector(".toggle-temperature");
   };
 
@@ -36,20 +34,41 @@ export default class View {
   };
 
   renderHourlyWeather = (weatherObject, measurement) => {
-    weatherObject.hourlyWeather.forEach(hour => {
-      this.time.textContent = hour.hour;
-      this.rainChance.textContent = `Rain: ${hour.chanceOfRain*100}%`; // check if *100 is correct
+    weatherObject.hourlyWeather.forEach((hour) => {
       if (measurement === 0) {
-        this.hourlyTemp.textContent = `${hour.tempC} °C`; 
+        const weatherCardHTML = this.createWeatherCard(
+          hour.hour,
+          hour.tempC,
+          hour.chanceOfRain * 100,
+          "°C"
+        );
+        this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
       } else if (measurement === 1) {
-        this.hourlyTemp.textContent = `${hour.tempF} °F`;
+        const weatherCardHTML = this.createWeatherCard(
+          hour.hour,
+          hour.chanceOfRain * 100,
+          hour.tempF,
+          "°F"
+        );
+        this.cards.appendChild(weatherCardHTML);
       }
-    })
-  }
+    });
+  };
+
+  createWeatherCard = (time, temperature, rainChance, measurement) => {
+    const cardHtml = `
+  <ul class="card">
+    <li class="time">${time}</li>
+    <li class="temp">${temperature} ${measurement}</li>
+    <li class="rainchance">Rain: ${rainChance}%</li>
+  </ul>`;
+
+    return cardHtml;
+  };
 
   bindToggleMeasurement = (handler) => {
-    this.toggleBtn.addEventListener("click", event => {
+    this.toggleBtn.addEventListener("click", (event) => {
       // code here
-    })
-  }
+    });
+  };
 }
