@@ -106,7 +106,9 @@ export default class Model {
     const chanceOfRain = chance_of_rain;
     const tempC = temp_c;
     const tempF = temp_f;
-    const hour = time;
+    const hourAndDate = time.split(" ");
+    const hour = hourAndDate[1]
+  
 
     return { chanceOfRain, tempC, tempF, hour };
   }
