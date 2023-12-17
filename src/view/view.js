@@ -9,24 +9,26 @@ export default class View {
     this.avgTemp = document.querySelector(".avg-temp-deg");
     this.minTemp = document.querySelector(".min-temp-deg");
     this.maxTemp = document.querySelector(".max-temp-deg");
-    this.sunrise = document.querySelector(".sunsrise");
+    this.sunrise = document.querySelector(".sunrise");
     this.sunset = document.querySelector(".sunset");
     this.weatherDescription = document.querySelector(".weather-description");
   };
 
   render = (weatherObject, measurement) => {
-    if ((measurement === 0)) {
-      this.location.textContent = weatherObject.location;
-      this.date.textContent = weatherObject.date;
-      this.avgTemp.textContent = weatherObject.avgtempC;
-      this.maxTemp.textContent = weatherObject.maxtempC;
-      this.minTemp.textContent = weatherObject.mintempC;
-    } else if ((measurement === 1)) {
-      this.location.textContent = weatherObject.location;
-      this.date.textContent = weatherObject.date;
-      this.avgTemp.textContent = weatherObject.avgtempF;
-      this.maxTemp.textContent = weatherObject.maxtempF;
-      this.minTemp.textContent = weatherObject.mintempF;
+    console.log(weatherObject);
+    this.location.textContent = weatherObject.location;
+    this.date.textContent = weatherObject.date;
+    this.sunrise.textContent = `Sunrise: ${weatherObject.sunrise}`;
+    this.sunset.textContent = `Sunset: ${weatherObject.sunset}`;
+
+    if (measurement === 0) {
+      this.avgTemp.textContent = `${weatherObject.avgtempC} °C`;
+      this.maxTemp.textContent = `${weatherObject.maxtempC} °C`;
+      this.minTemp.textContent = `${weatherObject.mintempC} °C`;
+    } else if (measurement === 1) {
+      this.avgTemp.textContent = `${weatherObject.avgtempF} °F`;
+      this.maxTemp.textContent = `${weatherObject.maxtempF} °F`;
+      this.minTemp.textContent = `${weatherObject.mintempF} °F`;
     }
   };
 
