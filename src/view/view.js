@@ -12,10 +12,10 @@ export default class View {
     this.sunrise = document.querySelector(".sunrise");
     this.sunset = document.querySelector(".sunset");
     this.weatherDescription = document.querySelector(".weather-description");
+    this.toggleBtn = document.querySelector(".toggle-temperature");
   };
 
   render = (weatherObject, measurement) => {
-    console.log(weatherObject);
     this.location.textContent = weatherObject.location;
     this.date.textContent = weatherObject.date;
     this.sunrise.textContent = `Sunrise: ${weatherObject.sunrise}`;
@@ -32,23 +32,9 @@ export default class View {
     }
   };
 
-  /* static bindSwitchDay = (handler) => {
-    const daysParent = document.querySelector(".upcoming-days");
-    const days = daysParent.querySelectorAll("div");
-    days.forEach((day) => {
-      day.addEventListener("click", (event) => {
-        // removes the selected class from list item
-        days.forEach(newDay => {
-          newDay.classList.remove("selected", newDay.classList.contains("selected"));
-        })
-        
-        event.target.classList.toggle(
-          "selected",
-          !event.target.classList.contains("selected"),
-        );
-        const { id } = event.target;
-        handler(id);
-      });
-    });
-  } */
+  bindToggleMeasurement = (handler) => {
+    this.toggleBtn.addEventListener("click", event => {
+      // code here
+    })
+  }
 }
