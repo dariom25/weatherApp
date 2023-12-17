@@ -22,11 +22,11 @@ export default class View {
     this.sunrise.textContent = `Sunrise: ${weatherObject.sunrise}`;
     this.sunset.textContent = `Sunset: ${weatherObject.sunset}`;
 
-    if (measurement === 0) {
+    if (measurement === "0") {
       this.avgTemp.textContent = `${weatherObject.avgtempC} °C`;
       this.maxTemp.textContent = `${weatherObject.maxtempC} °C`;
       this.minTemp.textContent = `${weatherObject.mintempC} °C`;
-    } else if (measurement === 1) {
+    } else if (measurement === "1") {
       this.avgTemp.textContent = `${weatherObject.avgtempF} °F`;
       this.maxTemp.textContent = `${weatherObject.maxtempF} °F`;
       this.minTemp.textContent = `${weatherObject.mintempF} °F`;
@@ -35,7 +35,7 @@ export default class View {
 
   renderHourlyWeather = (weatherObject, measurement) => {
     weatherObject.hourlyWeather.forEach((hour) => {
-      if (measurement === 0) {
+      if (measurement === "0") {
         const weatherCardHTML = this.createWeatherCard(
           hour.hour,
           hour.tempC,
@@ -43,14 +43,14 @@ export default class View {
           "°C"
         );
         this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
-      } else if (measurement === 1) {
+      } else if (measurement === "1") {
         const weatherCardHTML = this.createWeatherCard(
           hour.hour,
-          hour.chanceOfRain * 100,
           hour.tempF,
+          hour.chanceOfRain,
           "°F"
         );
-        this.cards.appendChild(weatherCardHTML);
+        this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
       }
     });
   };
@@ -68,7 +68,25 @@ export default class View {
 
   bindToggleMeasurement = (handler) => {
     this.toggleBtn.addEventListener("click", (event) => {
-      // code here
+      this.deleteWeatherCards();
+      const id = event.target.id;
+      handler(id);
+      if (id === "1") {
+        this.toggleBtn.textContent = "Toggle Temperature to °C";
+        this.toggleBtn.id = 0;
+      } else if (id === "0") {
+        this.toggleBtn.textContent = "Toggle Temperature to °F";
+        this.toggleBtn.id = 1;
+      }
     });
   };
+
+  deleteWeatherCards = () => {
+    const cardsParent = document.querySelector(".cards");
+    const cardsChild = cardsParent.querySelectorAll(".card");
+    cardsChild.forEach(card => {
+      cardsParent.removeChild(card);
+    })
+
+  }
 }
