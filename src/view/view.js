@@ -39,7 +39,7 @@ export default class View {
         const weatherCardHTML = this.createWeatherCard(
           hour.hour,
           hour.tempC,
-          hour.chanceOfRain * 100,
+          hour.chanceOfRain,
           "°C"
         );
         this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
