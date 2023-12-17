@@ -12,6 +12,9 @@ export default class View {
     this.sunrise = document.querySelector(".sunrise");
     this.sunset = document.querySelector(".sunset");
     this.weatherDescription = document.querySelector(".weather-description");
+    this.time = document.querySelector(".time");
+    this.hourlyTemp = document.querySelector(".temp");
+    this.rainChance = document.querySelector(".rainchance");
     this.toggleBtn = document.querySelector(".toggle-temperature");
   };
 
@@ -31,6 +34,18 @@ export default class View {
       this.minTemp.textContent = `${weatherObject.mintempF} °F`;
     }
   };
+
+  renderHourlyWeather = (weatherObject, measurement) => {
+    weatherObject.hourlyWeather.forEach(hour => {
+      this.time.textContent = hour.hour;
+      this.rainChance.textContent = `Rain: ${hour.chanceOfRain*100}%`; // check if *100 is correct
+      if (measurement === 0) {
+        this.hourlyTemp.textContent = `${hour.tempC} °C`; 
+      } else if (measurement === 1) {
+        this.hourlyTemp.textContent = `${hour.tempF} °F`;
+      }
+    })
+  }
 
   bindToggleMeasurement = (handler) => {
     this.toggleBtn.addEventListener("click", event => {
