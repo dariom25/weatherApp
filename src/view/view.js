@@ -83,7 +83,24 @@ export default class View {
     });
   };
 
+  bindSwitchDay = (handler) => {
+    this.upcomingDays.addEventListener("click", event => {
+      this.deleteWeatherCards();
+      const upcomingDays = this.upcomingDays.querySelectorAll("div");
 
+      if (event.target.classList.contains("today")) {
+        this.day = event.target.id
+        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+      } else if (event.target.classList.contains("tomorrow")) {
+        this.day = event.target.id
+        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+      } else if (event.target.classList.contains("day-after-tomorrow")) {
+        this.day = event.target.id
+        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+      }
+      handler()
+    })
+  }
 
   deleteWeatherCards = () => {
     const cardsParent = document.querySelector(".cards");
