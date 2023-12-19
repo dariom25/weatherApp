@@ -5,12 +5,15 @@ export default class Model {
   }
 
   fetchWeatherData = async (location) => {
-    const response = await fetch(
+    try{const response = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=${this.key}&q=${location}&days=3`,
       { mode: "cors" },
     );
     const weatherData = await response.json();
     return this.processWeatherData(weatherData);
+    } catch(err) {
+      console.log(err)
+    }
   };
 
   processWeatherData = (weatherData) => {
