@@ -17,9 +17,10 @@ export default class View {
     this.weatherDescription = document.querySelector(".weather-description");
     this.cards = document.querySelector(".cards");
     this.toggleBtn = document.querySelector(".toggle-temperature");
+    this.searchBtn = document.querySelector(".search-button");
   };
 
-  render = (weatherObject, ) => {
+  render = (weatherObject) => {
     this.location.textContent = weatherObject.location;
     this.date.textContent = weatherObject.date;
     this.sunrise.textContent = `Sunrise: ${weatherObject.sunrise}`;
@@ -43,7 +44,7 @@ export default class View {
           hour.hour,
           hour.tempC,
           hour.chanceOfRain,
-          "°C"
+          "°C",
         );
         this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
       } else if (this.measurement === "1") {
@@ -51,7 +52,7 @@ export default class View {
           hour.hour,
           hour.tempF,
           hour.chanceOfRain,
-          "°F"
+          "°F",
         );
         this.cards.insertAdjacentHTML("beforeend", weatherCardHTML);
       }
@@ -71,7 +72,6 @@ export default class View {
 
   bindToggleMeasurement = (handler) => {
     this.toggleBtn.addEventListener("click", () => {
-      this.deleteWeatherCards();
       handler(this.measurement);
       if (this.measurement === "1") {
         this.toggleBtn.textContent = "Toggle Temperature to °F";
@@ -84,39 +84,49 @@ export default class View {
   };
 
   bindSwitchDay = (handler) => {
-    this.upcomingDays.addEventListener("click", event => {
-      this.deleteWeatherCards();
+    this.upcomingDays.addEventListener("click", (event) => {
       const upcomingDays = this.upcomingDays.querySelectorAll("div");
       if (event.target.classList.contains("today")) {
-        this.day = event.target.id
-        this.switchDay(upcomingDays, this.day)
+        this.day = event.target.id;
+        this.switchDay(upcomingDays, this.day);
       } else if (event.target.classList.contains("tomorrow")) {
-        this.day = event.target.id
-        this.switchDay(upcomingDays, this.day)
+        this.day = event.target.id;
+        this.switchDay(upcomingDays, this.day);
       } else if (event.target.classList.contains("day-after-tomorrow")) {
-        this.day = event.target.id
-        this.switchDay(upcomingDays, this.day)
+        this.day = event.target.id;
+        this.switchDay(upcomingDays, this.day);
       }
-      handler()
-    })
-  }
+      handler();
+    });
+  };
+
+  bindSearchLocation = (handler) => {
+    this.searchBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      handler();
+    });
+  };
+
+  getUserInput = () => {
+    const location = document.querySelector(".search-bar > input").value;
+    return location;
+  };
 
   switchDay = (arr, id) => {
-    arr.forEach(day => {
+    arr.forEach((day) => {
       if (day.id === id) {
-        day.classList.add("selected")
+        day.classList.add("selected");
       } else {
-        day.classList.remove("selected")
+        day.classList.remove("selected");
       }
-    })
-  }
+    });
+  };
 
   deleteWeatherCards = () => {
     const cardsParent = document.querySelector(".cards");
     const cardsChild = cardsParent.querySelectorAll(".card");
-    cardsChild.forEach(card => {
+    cardsChild.forEach((card) => {
       cardsParent.removeChild(card);
-    })
-
-  }
+    });
+  };
 }
