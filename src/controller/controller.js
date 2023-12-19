@@ -2,7 +2,7 @@ export default class Controller {
   constructor(model, view) {
     this.model = model;
     this.view = view;
-    this.weatherData = this.model.fetchWeatherData("hanover");
+    this.weatherData = this.model.fetchWeatherData(this.model.location);
     this.updateDisplay(this.weatherData);
     this.bindEvents();
   }
