@@ -74,10 +74,10 @@ export default class View {
       this.deleteWeatherCards();
       handler(this.measurement);
       if (this.measurement === "1") {
-        this.toggleBtn.textContent = "Toggle Temperature to °C";
+        this.toggleBtn.textContent = "Toggle Temperature to °F";
         this.measurement = "0";
       } else if (this.measurement === "0") {
-        this.toggleBtn.textContent = "Toggle Temperature to °F";
+        this.toggleBtn.textContent = "Toggle Temperature to °C";
         this.measurement = "1";
       }
     });
@@ -87,7 +87,6 @@ export default class View {
     this.upcomingDays.addEventListener("click", event => {
       this.deleteWeatherCards();
       const upcomingDays = this.upcomingDays.querySelectorAll("div");
-      // loop to decide where to put selected and where to remove it
       if (event.target.classList.contains("today")) {
         this.day = event.target.id
         this.switchDay(upcomingDays, this.day)
