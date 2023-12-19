@@ -5,14 +5,15 @@ export default class Model {
   }
 
   fetchWeatherData = async (location) => {
-    try{const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${this.key}&q=${location}&days=3`,
-      { mode: "cors" },
-    );
-    const weatherData = await response.json();
-    return this.processWeatherData(weatherData);
-    } catch(err) {
-      console.log(err)
+    try {
+      const response = await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=${this.key}&q=${location}&days=3`,
+        { mode: "cors" },
+      );
+      const weatherData = await response.json();
+      return this.processWeatherData(weatherData);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -110,8 +111,7 @@ export default class Model {
     const tempC = temp_c;
     const tempF = temp_f;
     const hourAndDate = time.split(" ");
-    const hour = hourAndDate[1]
-  
+    const hour = hourAndDate[1];
 
     return { chanceOfRain, tempC, tempF, hour };
   }
