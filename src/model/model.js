@@ -17,6 +17,20 @@ export default class Model {
     }
   };
 
+  fetchGif = async (img, string) => {
+    try {
+      const response = await fetch(
+        `https://api.giphy.com/v1/gifs/translate?api_key=WNl3l03xNBpnrQnllQVM3W1luIVbYoM2&s=${string}`,
+        { mode: "cors" },
+      );
+      const data = await response.json();
+      const weatherImg = img;
+      weatherImg.src = data.data.images.original.url;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   processWeatherData = (weatherData) => {
     const processedWeather = [];
 
