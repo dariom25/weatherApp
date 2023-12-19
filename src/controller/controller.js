@@ -26,6 +26,7 @@ export default class Controller {
   handleSearchLocation = () => {
     this.model.location = this.view.getUserInput();
     this.weatherData = this.model.fetchWeatherData(this.model.location);
+    this.view.emptyInput();
     this.updateDisplay(this.weatherData);
   }
 
