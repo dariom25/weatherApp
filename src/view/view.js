@@ -122,6 +122,11 @@ export default class View {
     });
   };
 
+  emptyInput = () => {
+    const location = document.querySelector(".search-bar > input");
+    location.value = "";
+  }
+
   deleteWeatherCards = () => {
     const cardsParent = document.querySelector(".cards");
     const cardsChild = cardsParent.querySelectorAll(".card");
