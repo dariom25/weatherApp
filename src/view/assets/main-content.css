@@ -138,7 +138,6 @@
   background-color: var(--lightblue);
   border-radius: 10px;
   padding: 10px;
-  width: 8rem;
   display: flex;
   flex-direction: column;
   list-style: none;
@@ -149,6 +148,7 @@
   padding-bottom: 5px;
   border-bottom: 1px solid var(--dark-blue);
   overflow-x: hidden;
+  width: 6rem;
 }
 
 .current-hour{
