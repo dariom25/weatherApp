@@ -3,14 +3,14 @@ export default class Controller {
     this.model = model;
     this.view = view;
     this.weatherData = this.model.fetchWeatherData("hanover");
-    this.updateDisplay(this.weatherData, "0");
+    this.updateDisplay(this.weatherData);
     this.bindEvents();
   }
 
-  updateDisplay = (weatherObject, measurement) => {
+  updateDisplay = (weatherObject) => {
     weatherObject.then((weatherData) => {
-      this.view.render(weatherData[0], measurement);
-      this.view.renderHourlyWeather(weatherData[0], measurement);
+      this.view.render(weatherData[this.view.day], this.view.measurement);
+      this.view.renderHourlyWeather(weatherData[this.view.day], this.view.measurement);
     });
   };
 
@@ -18,7 +18,12 @@ export default class Controller {
     this.updateDisplay(this.weatherData, id);
   }
 
+  handleSwitchDay = () => {
+    this.updateDisplay(this.weatherData, this.view.measurement)
+  }
+
   bindEvents = () => {
     this.view.bindToggleMeasurement(this.handleToggleMeasurement);
+    this.view.bindSwitchDay(this.handleSwitchDay)
   }
 }
