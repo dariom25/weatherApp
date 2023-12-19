@@ -87,18 +87,28 @@ export default class View {
     this.upcomingDays.addEventListener("click", event => {
       this.deleteWeatherCards();
       const upcomingDays = this.upcomingDays.querySelectorAll("div");
-
+      // loop to decide where to put selected and where to remove it
       if (event.target.classList.contains("today")) {
         this.day = event.target.id
-        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+        this.switchDay(upcomingDays, this.day)
       } else if (event.target.classList.contains("tomorrow")) {
         this.day = event.target.id
-        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+        this.switchDay(upcomingDays, this.day)
       } else if (event.target.classList.contains("day-after-tomorrow")) {
         this.day = event.target.id
-        event.target.classList.toggle("select", event.target.classList.contains("selected"))
+        this.switchDay(upcomingDays, this.day)
       }
       handler()
+    })
+  }
+
+  switchDay = (arr, id) => {
+    arr.forEach(day => {
+      if (day.id === id) {
+        day.classList.add("selected")
+      } else {
+        day.classList.remove("selected")
+      }
     })
   }
 
