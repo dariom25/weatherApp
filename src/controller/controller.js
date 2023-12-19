@@ -8,6 +8,7 @@ export default class Controller {
   }
 
   updateDisplay = (weatherObject) => {
+    this.view.deleteWeatherCards();
     weatherObject.then((weatherData) => {
       this.view.render(weatherData[this.view.day], this.view.measurement);
       this.view.renderHourlyWeather(weatherData[this.view.day], this.view.measurement);
@@ -22,8 +23,15 @@ export default class Controller {
     this.updateDisplay(this.weatherData, this.view.measurement)
   }
 
+  handleSearchLocation = () => {
+    this.model.location = this.view.getUserInput();
+    this.weatherData = this.model.fetchWeatherData(this.model.location);
+    this.updateDisplay(this.weatherData);
+  }
+
   bindEvents = () => {
     this.view.bindToggleMeasurement(this.handleToggleMeasurement);
-    this.view.bindSwitchDay(this.handleSwitchDay)
+    this.view.bindSwitchDay(this.handleSwitchDay);
+    this.view.bindSearchLocation(this.handleSearchLocation);
   }
 }
