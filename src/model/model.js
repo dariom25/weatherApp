@@ -17,15 +17,14 @@ export default class Model {
     }
   };
 
-  fetchGif = async (img, string) => {
+  fetchGif = async (string) => {
     try {
       const response = await fetch(
         `https://api.giphy.com/v1/gifs/translate?api_key=WNl3l03xNBpnrQnllQVM3W1luIVbYoM2&s=${string}`,
         { mode: "cors" },
       );
       const data = await response.json();
-      const weatherImg = img;
-      weatherImg.src = data.data.images.original.url;
+      return this.createGifObject(data);
     } catch (err) {
       console.log(err);
     }
@@ -128,5 +127,16 @@ export default class Model {
     const hour = hourAndDate[1];
 
     return { chanceOfRain, tempC, tempF, hour };
+  }
+
+  createGifObject(gifPromise) {
+    const {
+      data: {
+        images: {
+          original: { url },
+        },
+      },
+    } = gifPromise;
+    return url;
   }
 }
