@@ -3,8 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <script src="bundle.js"></script>
+    <title>Common Cloudy Compass</title>
+    <script src="bundle.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="header">
+      <div class="app-name">
+        Wild Wild <br />
+        Weather
+      </div>
+      <div class="navigation">
+        <form class="search-bar">
+          <input type="text" placeholder="Location" />
+          <button class="search-button">Search</button>
+        </form>
+        <button id="1" class="toggle-temperature">
+          Toggle Temperature to °F
+        </button>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="upcoming-days">
+        <div id="0" class="today selected">Today</div>
+        <div id="1" class="tomorrow">Tomorrow</div>
+        <div id="2" class="day-after-tomorrow">Day after tomorrow</div>
+      </div>
+      <div class="daily-weather">
+        <div class="avg-temp p-in-px seperator">Avg. Temperature:</div>
+        <div class="max-temp p-in-px seperator">Max. Temperature:</div>
+        <div class="min-temp p-in-px seperator">Min. Temperature:</div>
+        <div class="location p-in-px seperator">[Location: ]</div>
+        <div class="date p-in-px seperator">[Date]</div>
+        <div class="avg-temp-deg p-in-px seperator">[avg temp deg]</div>
+        <div class="max-temp-deg p-in-px seperator">[max temp deg]</div>
+        <div class="min-temp-deg p-in-px seperator">[min temp deg]</div>
+        <img class="weather-description" alt="Waiting..."></img>
+      </div>
+      <div class="hourly-weather">
+        <div class="hourly-weather-header">
+          <div class="hourly-forecast">Hourly Forecast</div>
+          <div class="sun-information">
+            <div class="sunrise">Sunrise:</div>
+            <div class="sunset">Sunset:</div>
+          </div>
+        </div>
+        <div class="cards"></div>
+      </div>
+    </div>
+  </body>
 </html>
