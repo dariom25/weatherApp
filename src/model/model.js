@@ -17,10 +17,23 @@ export default class Model {
     }
   };
 
-  fetchGif = async (string) => {
+  getWeatherDescription = async (weatherObject, day) => {
+    try {
+      const weather = await weatherObject;
+      const description = weather[day].weatherDescription;
+  
+      // Now, use this description to fetch the GIF
+      const gif = await this.fetchGif(description);
+      return gif;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  fetchGif = async (weatherDescription) => {
     try {
       const response = await fetch(
-        `https://api.giphy.com/v1/gifs/translate?api_key=WNl3l03xNBpnrQnllQVM3W1luIVbYoM2&s=${string}`,
+        `https://api.giphy.com/v1/gifs/translate?api_key=WNl3l03xNBpnrQnllQVM3W1luIVbYoM2&s=weather${weatherDescription}`,
         { mode: "cors" },
       );
       const data = await response.json();
