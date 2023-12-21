@@ -21,7 +21,7 @@ export default class Model {
     try {
       const weather = await weatherObject;
       const description = weather[day].weatherDescription;
-  
+
       // Now, use this description to fetch the GIF
       const gif = await this.fetchGif(description);
       return gif;

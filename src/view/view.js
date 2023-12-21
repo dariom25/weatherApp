@@ -20,7 +20,7 @@ export default class View {
     this.searchBtn = document.querySelector(".search-button");
   };
 
-  render = (weatherObject) => { 
+  render = (weatherObject) => {
     this.location.textContent = weatherObject.location;
     this.date.textContent = weatherObject.date;
     this.sunrise.textContent = `Sunrise: ${weatherObject.sunrise}`;
@@ -39,7 +39,7 @@ export default class View {
 
   renderGif = (gifUrl) => {
     this.weatherDescription.src = gifUrl;
-  }
+  };
 
   renderHourlyWeather = (weatherObject) => {
     weatherObject.hourlyWeather.forEach((hour) => {
@@ -129,7 +129,7 @@ export default class View {
   emptyInput = () => {
     const location = document.querySelector(".search-bar > input");
     location.value = "";
-  }
+  };
 
   deleteWeatherCards = () => {
     const cardsParent = document.querySelector(".cards");

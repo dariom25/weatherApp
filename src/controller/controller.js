@@ -3,8 +3,11 @@ export default class Controller {
     this.model = model;
     this.view = view;
     this.weatherData = this.model.fetchWeatherData(this.model.location);
-    this.gifUrl = this.model.getWeatherDescription(this.weatherData, this.view.day);
-    
+    this.gifUrl = this.model.getWeatherDescription(
+      this.weatherData,
+      this.view.day,
+    );
+
     this.updateDisplay(this.weatherData, this.gifUrl);
     this.bindEvents();
   }
@@ -25,7 +28,10 @@ export default class Controller {
   };
 
   handleSwitchDay = () => {
-    this.gifUrl = this.model.getWeatherDescription(this.weatherData, this.view.day);
+    this.gifUrl = this.model.getWeatherDescription(
+      this.weatherData,
+      this.view.day,
+    );
     this.updateDisplay(this.weatherData, this.gifUrl);
   };
 
